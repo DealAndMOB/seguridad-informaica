@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legislación Informática</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0047AB;
+            --secondary-color: #FFFFFF;
+            --accent-color: #00264d;
+            --text-color: #333333;
+            --light-gray: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+        #sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100%;
+            left: -250px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        #sidebar.active {
+            left: 0;
+        }
+        #content {
+            width: 100%;
+            transition: var(--transition);
+        }
+        #content.active {
+            margin-left: 250px;
+        }
+        .sidebar-header {
+            padding: 20px;
+            background-color: var(--accent-color);
+        }
+        .sidebar-header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .sidebar-menu {
+            padding: 0;
+            list-style-type: none;
+        }
+        .sidebar-menu li {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-menu li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+        .sidebar-menu li a:hover {
+            padding-left: 10px;
+            color: var(--light-gray);
+        }
+        #sidebarCollapse {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hero-section {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: var(--secondary-color);
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        .hero-text {
+            flex-grow: 1;
+            padding: 0 2rem;
+        }
+        .intro-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .topic-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            overflow: hidden;
+            height: 100%;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .topic-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .topic-card-body {
+            padding: 1.5rem;
+        }
+        .btn-explore {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+        .btn-explore:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .cover-section {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                left: -250px;
+            }
+            #content {
+                margin-left: 0;
+            }
+            #content.active {
+                margin-left: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/api/placeholder/200/80" alt="Logo" class="img-fluid">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="../index.html"><i class="fas fa-home me-2"></i>Inicio</a></li>
+                <li><a href="legislacion.html"><i class="fas fa-book-open me-2"></i>Legislación</a></li>
+                <li><a href="leyes.html"><i class="fas fa-info-circle me-2"></i>Leyes nacionales e internacionales</a></li>
+                <li><a href="tramites.html"><i class="fas fa-book-open me-2"></i>proceso de tramites</a></li>
+                <li><a href="etica.html"><i class="fas fa-book-open me-2"></i>Etica y delitos informaticos</a></li>
+                <li><a href="caracteristicas.html"><i class="fas fa-book-open me-2"></i>caracteristicas de los delitos informaticos</a></li>
+
+                <li><a href="conclusiones.html"><i class="fas fa-flag-checkered me-2"></i>Conclusiones</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <button type="button" id="sidebarCollapse">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <header class="hero-section">
+                <div class="container">
+                    <h1 class="display-4 mb-4 fw-bold">Leyes nacionales e internacionales</h1>
+                </div>
+            </header>
+
+            <main class="container">
+                <section id="conceptos">
+                    <div class="intro-card">
+                        <h2 class="h4 mb-3">Leyes Nacionales e Internacionales y Trámites de Registro</h2>
+                        
+                        <h3 class="h5 mb-2">Leyes Nacionales e Internacionales Aplicables</h3>
+                        <p><strong>Derechos de Autor:</strong> A nivel nacional, cada país tiene su propia legislación sobre derechos de autor. En México, la Ley Federal del Derecho de Autor regula la protección de las obras literarias y artísticas, otorgando derechos a los creadores sobre sus obras. A nivel internacional, el Convenio de Berna para la Protección de las Obras Literarias y Artísticas establece un marco que permite el reconocimiento mutuo de los derechos de autor entre los países firmantes. Asimismo, tratados como el Tratado de Libre Comercio de América del Norte (TLCAN) y el Tratado de Libre Comercio entre México y la Unión Europea también contienen disposiciones sobre derechos de autor.</p>
+                        
+                        <p><strong>Privacidad y Protección de Datos:</strong> En el ámbito nacional, México cuenta con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, que establece los lineamientos para el tratamiento de datos personales. A nivel internacional, el Reglamento General de Protección de Datos (GDPR) de la Unión Europea es un referente importante que establece derechos específicos para los individuos sobre su información personal y obligaciones para las empresas que manejan estos datos.</p>
+                        
+                        <h3 class="h5 mb-2">Trámites y Requisitos de Registro de Obras</h3>
+                        <p>Para registrar una obra ante la institución de derechos de autor, como el Instituto Nacional del Derecho de Autor (INDAUTOR) en México, se deben seguir ciertos pasos y cumplir con requisitos específicos. Generalmente, estos son:</p>
+                        <ul>
+                            <li>Completar una solicitud de registro que incluya datos del autor y una descripción de la obra.</li>
+                            <li>Presentar una copia de la obra en el formato correspondiente (por ejemplo, documento impreso, archivo digital, etc.).</li>
+                            <li>Pagar la tarifa de registro establecida por la institución.</li>
+                            <li>Proporcionar una identificación oficial del autor o representante legal en caso de que el registro sea realizado por alguien en nombre del autor.</li>
+                        </ul>
+                        <p>Una vez presentado el trámite, la institución evaluará la solicitud y, si cumple con los requisitos, otorgará un certificado de registro que garantiza la protección legal de la obra.</p>
+                    </div>
+                    
+                    
+                </section>
+
+                <!-- Puedes añadir más secciones aquí según sea necesario -->
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="topic-card">
+                            <img src="../media/images/leyes.jpeg" alt="Leyes y Registro de Obras" class="card-img-top">
+                            <div class="topic-card-body">
+                                <h3 class="h5 mb-3">Leyes y Trámites de Registro de Obras</h3>
+                                <ul class="list-unstyled mb-4">
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Leyes Nacionales sobre Derechos de Autor</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Leyes Internacionales: Convenio de Berna</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Protección de Datos Personales</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Trámites de Registro ante INDAUTOR</li>
+                                </ul>
+                                <a href="https://www.indautor.gob.mx/documentos/marco-juridico/leyfederal.pdf" class="btn btn-explore">Explorar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </main>
+
+            <footer class="bg-dark text-white text-center py-4 mt-5">
+                <div class="container">
+                    <h2 class="h5 mb-3">Universidad Politécnica de Técamac</h2>
+                    <p>&copy; 2024 Todos los derechos reservados</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+
+            sidebarCollapse.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInside = sidebar.contains(event.target) || sidebarCollapse.contains(event.target);
+                if (!isClickInside && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    content.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

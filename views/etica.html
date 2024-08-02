@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legislación Informática</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0047AB;
+            --secondary-color: #FFFFFF;
+            --accent-color: #00264d;
+            --text-color: #333333;
+            --light-gray: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+        #sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100%;
+            left: -250px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        #sidebar.active {
+            left: 0;
+        }
+        #content {
+            width: 100%;
+            transition: var(--transition);
+        }
+        #content.active {
+            margin-left: 250px;
+        }
+        .sidebar-header {
+            padding: 20px;
+            background-color: var(--accent-color);
+        }
+        .sidebar-header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .sidebar-menu {
+            padding: 0;
+            list-style-type: none;
+        }
+        .sidebar-menu li {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-menu li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+        .sidebar-menu li a:hover {
+            padding-left: 10px;
+            color: var(--light-gray);
+        }
+        #sidebarCollapse {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hero-section {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: var(--secondary-color);
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        .hero-text {
+            flex-grow: 1;
+            padding: 0 2rem;
+        }
+        .intro-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .topic-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            overflow: hidden;
+            height: 100%;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .topic-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .topic-card-body {
+            padding: 1.5rem;
+        }
+        .btn-explore {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+        .btn-explore:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .cover-section {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                left: -250px;
+            }
+            #content {
+                margin-left: 0;
+            }
+            #content.active {
+                margin-left: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/api/placeholder/200/80" alt="Logo" class="img-fluid">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="../index.html"><i class="fas fa-home me-2"></i>Inicio</a></li>
+                <li><a href="legislacion.html"><i class="fas fa-book-open me-2"></i>Legislación</a></li>
+                <li><a href="leyes.html"><i class="fas fa-info-circle me-2"></i>Leyes nacionales e internacionales</a></li>
+                <li><a href="tramites.html"><i class="fas fa-book-open me-2"></i>proceso de tramites</a></li>
+                <li><a href="etica.html"><i class="fas fa-book-open me-2"></i>Etica y delitos informaticos</a></li>
+                <li><a href="caracteristicas.html"><i class="fas fa-book-open me-2"></i>caracteristicas de los delitos informaticos</a></li>
+
+                <li><a href="conclusiones.html"><i class="fas fa-flag-checkered me-2"></i>Conclusiones</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <button type="button" id="sidebarCollapse">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <header class="hero-section">
+                <div class="container">
+                    <h1 class="display-4 mb-4 fw-bold">Ética informática y delitos informáticos</h1>
+                </div>
+            </header>
+
+            <main class="container">
+                <section id="conceptos">
+                    <div class="intro-card mb-5">
+                        <p><strong>Ética Informática:</strong> La ética informática se refiere al marco de principios morales que rigen el comportamiento de los profesionales en el campo de la informática. Este conjunto de normas es fundamental para guiar la conducta en la creación, implementación y uso de tecnologías de la información. Los profesionales deben considerar el impacto social de su trabajo, asegurándose de que sus decisiones y acciones no perjudiquen a individuos o comunidades. La ética informática también aborda temas como el respeto a la privacidad de los usuarios, la integridad de los datos y la responsabilidad en el manejo de la información sensible.</p>
+                        <p>Además, la ética en informática se ocupa de las cuestiones relacionadas con la inteligencia artificial y el aprendizaje automático, donde los algoritmos pueden influir en la vida de las personas. Esto incluye la necesidad de evitar sesgos en el desarrollo de sistemas, garantizando que las tecnologías sean justas y equitativas para todos los usuarios. La educación en ética informática es esencial para preparar a los futuros profesionales a enfrentar dilemas éticos en su carrera.</p>
+                        <p><strong>Delitos Informáticos:</strong> Los delitos informáticos son actividades ilegales que se realizan a través de computadoras o redes informáticas. Estos delitos abarcan una amplia gama de actividades, desde el acceso no autorizado a sistemas informáticos (hacking) hasta la creación y distribución de software malicioso (malware) con la intención de dañar o robar información. También se incluyen el robo de identidad, el fraude en línea y el acoso cibernético, todos los cuales representan serios riesgos para la seguridad de los individuos y organizaciones.</p>
+                        <p>La naturaleza transnacional de los delitos informáticos presenta desafíos únicos para la aplicación de la ley, ya que las jurisdicciones pueden variar significativamente en sus definiciones y sanciones. Esto hace que la cooperación internacional sea crucial en la lucha contra estos delitos. Además, a medida que las tecnologías continúan evolucionando, también lo hacen las tácticas de los delincuentes, lo que exige una actualización constante de las leyes y regulaciones para abordar las nuevas amenazas. La educación y la concientización sobre los delitos informáticos son vitales para que los usuarios puedan protegerse adecuadamente y denunciar cualquier actividad sospechosa.</p>
+                    </div>                    
+                    
+                    
+                </section>
+
+                <!-- Puedes añadir más secciones aquí según sea necesario -->
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="topic-card">
+                            <img src="../media/images/Ética Informática y Delitos Informáticos.jpeg" alt="Ética y Delitos Informáticos" class="card-img-top">
+                            <div class="topic-card-body">
+                                <h3 class="h5 mb-3">Ética y Delitos Informáticos</h3>
+                                <ul class="list-unstyled mb-4">
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Conceptos de Ética Informática</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Delitos Informáticos en México</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Aspectos Legales</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Códigos de Conducta</li>
+                                </ul>
+                                <a href="#etica" class="btn btn-explore">Descubrir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="bg-dark text-white text-center py-4 mt-5">
+                <div class="container">
+                    <h2 class="h5 mb-3">Universidad Politécnica de Técamac</h2>
+                    <p>&copy; 2024 Todos los derechos reservados</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+
+            sidebarCollapse.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInside = sidebar.contains(event.target) || sidebarCollapse.contains(event.target);
+                if (!isClickInside && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    content.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

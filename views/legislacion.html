@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legislación Informática</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0047AB;
+            --secondary-color: #FFFFFF;
+            --accent-color: #00264d;
+            --text-color: #333333;
+            --light-gray: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+        #sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100%;
+            left: -250px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        #sidebar.active {
+            left: 0;
+        }
+        #content {
+            width: 100%;
+            transition: var(--transition);
+        }
+        #content.active {
+            margin-left: 250px;
+        }
+        .sidebar-header {
+            padding: 20px;
+            background-color: var(--accent-color);
+        }
+        .sidebar-header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .sidebar-menu {
+            padding: 0;
+            list-style-type: none;
+        }
+        .sidebar-menu li {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-menu li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+        .sidebar-menu li a:hover {
+            padding-left: 10px;
+            color: var(--light-gray);
+        }
+        #sidebarCollapse {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hero-section {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: var(--secondary-color);
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        .hero-text {
+            flex-grow: 1;
+            padding: 0 2rem;
+        }
+        .intro-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .topic-card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            overflow: hidden;
+            height: 100%;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .topic-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .topic-card-body {
+            padding: 1.5rem;
+        }
+        .btn-explore {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+        .btn-explore:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .cover-section {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                left: -250px;
+            }
+            #content {
+                margin-left: 0;
+            }
+            #content.active {
+                margin-left: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="/api/placeholder/200/80" alt="Logo" class="img-fluid">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="../index.html"><i class="fas fa-home me-2"></i>Inicio</a></li>
+                <li><a href="legislacion.html"><i class="fas fa-book-open me-2"></i>Legislación</a></li>
+                <li><a href="leyes.html"><i class="fas fa-info-circle me-2"></i>Leyes nacionales e internacionales</a></li>
+                <li><a href="tramites.html"><i class="fas fa-book-open me-2"></i>Proceso de tramites</a></li>
+                <li><a href="etica.html"><i class="fas fa-book-open me-2"></i>Etica y delitos informaticos</a></li>
+                <li><a href="caracteristicas.html"><i class="fas fa-book-open me-2"></i>caracteristicas de los delitos informaticos</a></li>
+                <li><a href="conclusiones.html"><i class="fas fa-flag-checkered me-2"></i>Conclusiones</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <button type="button" id="sidebarCollapse">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <header class="hero-section">
+                <div class="container">
+                    <h1 class="display-4 mb-4 fw-bold">Legislación Informática</h1>
+                </div>
+            </header>
+
+            <main class="container">
+                <section id="conceptos">
+                    <div class="intro-card">
+                        <h2 class="h4 mb-3">Conceptos de Derechos de Autor, Privacidad y Protección de Datos</h2>
+                        <p><strong>Derechos de Autor:</strong> Los derechos de autor son un conjunto de normas jurídicas que otorgan a los creadores de obras originales el control sobre el uso de su trabajo. Esto incluye obras literarias, artísticas, musicales, cinematográficas, software y cualquier otra forma de expresión creativa. Los derechos de autor permiten a los autores reproducir, distribuir, exhibir y adaptar su obra, asegurando que obtengan reconocimiento y compensación económica. La duración de estos derechos varía según la legislación de cada país, pero generalmente se extiende durante la vida del autor más un número determinado de años tras su fallecimiento. Es crucial que los creadores registren sus obras para poder hacer valer sus derechos de autor y prevenir el uso no autorizado.</p>
+                    
+                        <p><strong>Privacidad:</strong> La privacidad es un derecho fundamental que permite a los individuos controlar la información que se recoge sobre ellos y cómo se utiliza. En la era digital, donde la información personal se comparte y almacena de diversas maneras, el concepto de privacidad se ha vuelto más complejo. Incluye la capacidad de decidir quién puede acceder a datos personales y en qué circunstancias. Las violaciones a la privacidad pueden ocurrir a través de prácticas como la vigilancia, la recopilación de datos sin consentimiento, o la exposición no autorizada de información personal. La privacidad también está relacionada con la intimidad, ya que se refiere al derecho de no ser observado o perturbado sin permiso.</p>
+                    
+                        <p><strong>Protección de Datos:</strong> La protección de datos es un aspecto crítico del manejo de información personal y se refiere a las políticas y prácticas diseñadas para garantizar que la información sea tratada de manera segura y responsable. Esto incluye la implementación de medidas técnicas, como el cifrado y la autenticación, así como la creación de regulaciones legales que obliguen a las organizaciones a proteger los datos personales de los usuarios. La protección de datos busca prevenir el acceso no autorizado, el uso indebido, la divulgación, la alteración y la destrucción de información personal. Las legislaciones, como el Reglamento General de Protección de Datos (GDPR) en la Unión Europea, establecen derechos específicos para los individuos, como el derecho a acceder, corregir y eliminar sus datos, fomentando una mayor transparencia y responsabilidad en el uso de la información personal.</p>
+                    </div>
+                    
+                </section>
+
+                <!-- Puedes añadir más secciones aquí según sea necesario -->
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="topic-card">
+                            <img src="../media/images/Legislación Informática.jpeg" alt="Legislación Informática" class="card-img-top">
+                            <div class="topic-card-body">
+                                <h3 class="h5 mb-3">Legislación Informática</h3>
+                                <ul class="list-unstyled mb-4">
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Derechos de Autor</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Privacidad y Protección de Datos</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Leyes Nacionales e Internacionales</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i>Registro de Obras</li>
+                                </ul>
+                                <a href="https://www.slideshare.net/slideshow/legislacin-informtica-en-mxico-251649194/251649194" class="btn btn-explore">Explorar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </main>
+
+            <footer class="bg-dark text-white text-center py-4 mt-5">
+                <div class="container">
+                    <h2 class="h5 mb-3">Universidad Politécnica de Técamac</h2>
+                    <p>&copy; 2024 Todos los derechos reservados</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+
+            sidebarCollapse.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInside = sidebar.contains(event.target) || sidebarCollapse.contains(event.target);
+                if (!isClickInside && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    content.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
